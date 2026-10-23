@@ -5,12 +5,11 @@ spring:
     name: "FranchiseApi"
   devtools:
     add-properties: false
-  h2:
-    console:
-      enabled: true
-      path: "/h2"
   profiles:
     include: null
+  sql:
+    init:
+      mode: never
 springdoc:
   swagger-ui.path: "/v3/swagger-ui.html"
   api-docs.path: "/v3/api-docs"
@@ -24,5 +23,13 @@ management:
     health:
       probes:
         enabled: true
+adapters:
+  r2dbc:
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:5432}
+    database: ${DB_NAME:franchise_db}
+    schema: ${DB_SCHEMA:public}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
