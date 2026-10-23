@@ -1,14 +1,15 @@
 package co.com.nequi.franchise.model.branch;
 import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-//import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Value;
 
-@Getter
-@Setter
-//@NoArgsConstructor
-@AllArgsConstructor
+@Value
 @Builder(toBuilder = true)
 public class Branch {
+    Long id;
+    String name;
+    Long franchiseId;
+
+    public boolean hasValidName(){
+        return name != null && !name.isBlank();
+    }
 }

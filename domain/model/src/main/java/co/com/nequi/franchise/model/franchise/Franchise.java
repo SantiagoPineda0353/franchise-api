@@ -1,14 +1,14 @@
 package co.com.nequi.franchise.model.franchise;
 import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-//import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Value;
 
-@Getter
-@Setter
-//@NoArgsConstructor
-@AllArgsConstructor
+@Value
 @Builder(toBuilder = true)
 public class Franchise {
+    Long id;
+    String name;
+
+    public boolean hasValidName(){
+        return name != null && !name.isBlank();
+    }
 }
